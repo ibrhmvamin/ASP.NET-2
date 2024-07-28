@@ -1,0 +1,36 @@
+﻿@model ProductViewModel
+<!DOCTYPE
+<html>
+<head>
+    <title>Products</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Products List</h1>
+        <div class="text-right mb-3">
+            <a href="/product/add" class="btn btn-primary btn-sm text-white m-1">Add</a>
+        </div>
+        <div class="row">
+            @foreach (var p in Model.Products)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@p.Name</h5>
+                            <p class="card-text">@p.Description</p>
+                            <p class="card-text">
+                                <strong>Price:</strong> @p.Price<br />
+                                <strong>Discount:</strong> @p.Discount
+                            </p>
+                        </div>
+                        <div class="m-3">
+                            <a href="@Url.Action("Update", "Product", new { id = p.Id })" class="btn btn-primary btn-sm mr-2 text-white">Update</a>
+                            <a href ="@Url.Action("Delete", "Product", new { id = p.Id })" class="btn btn-primary btn-sm text-white">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
